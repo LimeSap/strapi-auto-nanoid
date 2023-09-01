@@ -14,7 +14,6 @@ import {
   FieldHint,
   FieldInput,
   FieldLabel,
-  Icon,
   Stack,
   Flex,
 } from '@strapi/design-system';
@@ -23,8 +22,6 @@ import {nanoid} from "nanoid";
 
 export const FieldActionWrapper = styled(FieldAction)`
   svg {
-    height: 1rem;
-    width: 1rem;
     path {
       fill: ${({ theme }) => theme.colors.neutral400};
     }
