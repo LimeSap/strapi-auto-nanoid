@@ -1,26 +1,23 @@
 {
-  "name": "strapi-auto-uuid",
-  "version": "0.0.8",
-  "description": "This is the description of the plugin.",
+  "name": "strapi-auto-nanoid",
+  "version": "0.0.1",
+  "description": "Automatically generate NanoIDs",
   "strapi": {
-    "name": "field-uuid",
-    "description": "Description of uuid plugin",
+    "name": "field-nanoid",
+    "description": "Description of nanoid plugin",
     "kind": "plugin"
-  },
-  "dependencies": {
-    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@strapi/design-system": "^1.7.2",
     "@strapi/helper-plugin": "^4.10.1",
     "@strapi/icons": "^1.7.2",
+    "@strapi/strapi": "4.12.7",
     "@strapi/typescript-utils": "^4.10.1",
     "@types/jest": "^29.5.1",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
     "@types/styled-components": "^5.1.26",
-    "@types/uuid": "^9.0.1",
     "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "prop-types": "^15.8.1",
@@ -37,28 +34,17 @@
     "react-dom": "^18.2.0",
     "styled-components": "5.3.10"
   },
-  "homepage": "https://github.com/Cringe-Studio/strapi-auto-uuid",
-  "readme": "https://github.com/Cringe-Studio/strapi-auto-uuid#readme",
-  "maintainers": [
-    {
-      "name": "Cringe Studio",
-      "email": "tech@cringe.studio",
-      "url": "https://github.com/Cringe-Studio"
-    }
-  ],
   "author": {
-    "name": "Stefano Cerelli ",
-    "email": "stefano@cringe.studio",
-    "url": "https://github.com/scerelli"
+    "name": "Timothy Choi",
+    "url": "https://github.com/tyteen4a03"
   },
   "repository": {
-    "url": "https://github.com/Cringe-Studio/strapi-auto-uuid",
+    "url": "https://github.com/tyteen4a03/strapi-auto-nanoid",
     "type": "git",
     "directory": "."
   },
   "bugs": {
-    "url": "https://github.com/Cringe-Studio/strapi-auto-uuid/issues",
-    "email": "tech@cringe.studio"
+    "url": "https://github.com/tyteen4a03/strapi-auto-nanoid/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -74,11 +60,13 @@
     "npm": ">=8.0.0",
     "yarn": ">=1.0.0"
   },
-  "packageManager": "pnpm@8.4.0",
   "scripts": {
     "develop": "tsc -p tsconfig.server.json -w",
     "build": "tsc -p tsconfig.server.json",
     "test": "jest"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "nanoid": "^3.3.6"
+  }
 }

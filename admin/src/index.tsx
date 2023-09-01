@@ -11,20 +11,20 @@ const name = pluginPkg.strapi.name;
 export default {
   register(app: any) {
     app.customFields.register({
-      name: "uuid",
+      name: "nanoid",
       pluginId,
       type: "string",
       intlLabel: {
         id: getTrad("form.label"),
-        defaultMessage: "UUID",
+        defaultMessage: "NanoID",
       },
       intlDescription: {
         id: getTrad("form.description"),
-        defaultMessage: "Generates a UUID v4",
+        defaultMessage: "Generates a NanoID",
       },
-      icon: InputIcon,
+      //icon: InputIcon,
       components: {
-        Input: async () => import(/* webpackChunkName: "input-uuid-component" */ "./components/Input"),
+        Input: async () => import(/* webpackChunkName: "input-nanoid-component" */ "./components/Input"),
       },
       options: {
         advanced: [
@@ -35,15 +35,16 @@ export default {
             },
             items: [
               {
-                name: 'private',
-                type: 'checkbox',
+                name: 'options.idLength',
+                type: 'checkbox-with-number-field',
+                value: 21,
                 intlLabel: {
-                  id: 'form.attribute.item.privateField',
-                  defaultMessage: 'Private field',
+                  id: getTrad('settings.nanoid.idLength.heading'),
+                  defaultMessage: 'Length',
                 },
                 description: {
-                  id: 'form.attribute.item.privateField.description',
-                  defaultMessage: 'This field will not show up in the API response',
+                  id: getTrad("settings.nanoid.idLength.description"),
+                  defaultMessage: 'The length of the NanoID to generate',
                 },
               },
             ],

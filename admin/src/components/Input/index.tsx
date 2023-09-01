@@ -6,7 +6,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
 import styled from 'styled-components'
 import { Refresh } from "@strapi/icons"
-import { v4, validate } from 'uuid'
 import {
   Box,
   Field,
@@ -19,6 +18,7 @@ import {
   Stack,
   Flex,
 } from '@strapi/design-system';
+import {nanoid} from "nanoid";
 
 
 export const FieldActionWrapper = styled(FieldAction)`
@@ -47,6 +47,7 @@ const Input = ({
   name,
   onChange,
   value: initialValue = "",
+  attribute,
   ...props
 }: {
   description: any
@@ -57,24 +58,36 @@ const Input = ({
   labelAction: string
   name: string
   onChange(v: any): void
-  value: string
+  value: string,
+  attribute: {
+    customField: string,
+    options: {
+      idLength: number | null,
+    }
+  },
 }) => {
   const { formatMessage } = useIntl()
-  const [invalidUUID, setInvalidUUID] = useState<boolean>(false)
+  const [invalidNanoID, setInvalidNanoID] = useState<boolean>(false)
   const ref = useRef("")
+
+  const idLength = attribute?.options?.idLength ?? 21;
+  const validationRegExp = new RegExp("^[\\w_-]{" + idLength + "}$");
+  const validate = (proposedId) => {
+    return validationRegExp.test(proposedId)
+  }
 
   useEffect(() => {
     if(!initialValue) {
-      const newUUID = v4()
-      onChange({ target: { value: newUUID, name }})
+      const newNanoID = nanoid(idLength)
+      onChange({ target: { value: newNanoID, name }})
     }
 
     if(initialValue && initialValue !== ref.current)
       ref.current = initialValue
 
     const validateValue = validate(initialValue)
-    if(!validateValue) return setInvalidUUID(true)
-    setInvalidUUID(false)
+    if(!validateValue) return setInvalidNanoID(true)
+    setInvalidNanoID(false)
   }, [initialValue])
 
   return (
@@ -84,10 +97,10 @@ const Input = ({
         name={name}
         hint={description && formatMessage(description)}
         error={error ?? (
-          invalidUUID
+          invalidNanoID
             ? formatMessage({
-                id: 'uuid.form.field.error',
-                defaultMessage: 'The UUID format is invalid.',
+                id: 'nanoid.form.field.error',
+                defaultMessage: 'The NanoID format is invalid.',
               })
             : null
           )
@@ -109,11 +122,11 @@ const Input = ({
             endAction={
               <FieldActionWrapper
                 onClick={() => {
-                  const newUUID = v4()
-                  onChange({ target: { value: newUUID, name }})
+                  const newNanoID = nanoid(idLength)
+                  onChange({ target: { value: newNanoID, name }})
                 }}
                 label={formatMessage({
-                  id: 'uuid.form.field.generate',
+                  id: 'nanoid.form.field.generate',
                   defaultMessage: 'Generate',
                 })}
               >

@@ -1,6 +1,10 @@
 {
-  "form.label": "UUID",
-  "form.description": "Generates UUID v4",
+  "form.label": "NanoID",
+  "form.description": "Generates NanoID",
   "form.field.generate": "Generate",
-  "form.field.error": "The UUID format is invalid."
+  "form.field.error": "The NanoID format is invalid.",
+  "settings.nanoid.secure.heading": "Secure",
+  "settings.nanoid.secure.description": "Use secure generator.",
+  "settings.nanoid.idLength.heading": "ID Length",
+  "settings.nanoid.idLength.description": "The length of the NanoID to generate."
 }
