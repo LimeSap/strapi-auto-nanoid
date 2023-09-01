@@ -43,7 +43,6 @@ export default ({ strapi }: { strapi: Strapi }) => {
         const validate = (proposedId) => {
           return validationRegExp.test(proposedId)
         }
-        console.log(key, options);
         if(!event.params.data[key] || !validate(event.params.data[key])) {
           event.params.data[key] = nanoid(idLength)
         }
