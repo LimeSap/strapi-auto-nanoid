@@ -1,6 +1,6 @@
 {
   "name": "strapi-auto-nanoid",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Automatically generate NanoIDs",
   "strapi": {
     "name": "field-nanoid",
