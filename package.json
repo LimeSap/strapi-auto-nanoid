@@ -10,7 +10,6 @@
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@strapi/design-system": "^1.7.2",
-    "@strapi/helper-plugin": "^4.10.1",
     "@strapi/icons": "^1.7.2",
     "@strapi/strapi": "4.12.7",
     "@strapi/typescript-utils": "^4.10.1",
